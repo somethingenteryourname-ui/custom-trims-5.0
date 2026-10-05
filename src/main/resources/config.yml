@@ -1,0 +1,633 @@
+# =========================================================
+#  CustomTrims config
+#  After editing, run /ctrim reload
+# =========================================================
+
+# How often particles are drawn, in ticks (20 ticks = 1 second).
+# 1 = smoothest, 2 = good balance, 3-4 = lighter on big servers.
+tick-interval: 2
+
+# How many armor pieces need a custom trim before effects show (1-4).
+min-armor-pieces: 1
+
+# Only draw the trail while the player is moving.
+trail-only-when-moving: true
+
+# Hide effects for players who have the Invisibility potion effect.
+hide-when-invisible: true
+
+# Hide effects while sneaking.
+hide-when-sneaking: false
+
+# How trails and auras look when a trim doesn't say:
+#   liquid    = flowing, glossy liquid that wraps around you (needs the resource pack)
+#   particles = classic particles
+#   both      = liquid with particles on top
+# Players can change theirs with /ctrim style
+default-style: liquid
+
+liquid:
+  # Make the liquid glow at full brightness, even in the dark.
+  glow: true
+  # How often (in ticks) the colors flow one step around the ring. Lower = faster.
+  color-flow-ticks: 3
+
+# Players don't see their OWN aura by default (so it never blocks their view);
+# everyone else always sees it. Each player can change this with /ctrim selfview.
+see-own-aura-by-default: false
+
+# How long smooth changes take, in seconds: cycle mode changes, new colors and
+# new auras fade/grow into each other instead of switching instantly.
+blend-seconds: 1.5
+
+# Show trims on armor stands too (effects, liquid auras and cycle mode).
+armor-stands: true
+
+# Trimmed armor gets a custom inventory icon: trim accents in its colors...
+inventory-icons: true
+# ...and an animated liquid ring around it (inventory only, not in hand).
+inventory-ring: true
+
+# How many trims can be stacked on one armor piece (1-4). The first can be any
+# pattern; the extra ones must be the NEW patterns. Each new combination of
+# stacked trims is added to the resource pack automatically (players get a
+# quick pack update the first time a new combination is made).
+max-trim-layers: 3
+
+# Limits for /ctrim size and /ctrim density
+max-size: 3.0
+max-density: 3.0
+
+# ---------------------------------------------------------
+# Resource pack (needed so players can SEE the new trims and materials)
+# The plugin builds it for you: plugins/CustomTrims/CustomTrims-ResourcePack.zip
+# ---------------------------------------------------------
+resource-pack:
+  enabled: true
+  # The plugin hosts the pack itself on this port. Friends outside your
+  # network need this port forwarded, just like the Minecraft port.
+  port: 8164
+  # The address players use to reach the server. Leave blank to use
+  # whatever address each player typed to join.
+  public-address: ""
+  # OR: upload CustomTrims-ResourcePack.zip somewhere yourself (for example
+  # mc-packs.net) and paste the direct download link here. Then the port
+  # above is not used. Re-upload it whenever you add a new material.
+  url: ""
+  force: false
+  prompt: "This adds the custom armor trims!"
+
+# ---------------------------------------------------------
+# Custom trim materials = new trim colors ON the armor itself.
+# Give 1 color for a solid trim, or 2-8 colors to blend them from
+# the top of the armor down to the boots.
+# You can also add one in game: /ctrim newmaterial <name> <colors...>
+# After adding a new one, RESTART the server once.
+# Don't delete a material players are still wearing.
+# ---------------------------------------------------------
+custom-materials:
+  fire: ["#FFF27A", "#FF9A1F", "#FF3D00", "#9B0000"]
+  ice: ["#FFFFFF", "#BFF4FF", "#6FD6FF", "#2E7FD9"]
+  toxic: ["#E8FF6A", "#7CFF3A", "#1FAA3A", "#0B4D1E"]
+  galaxy: ["#FF2DD9", "#8B2DFF", "#2D5BFF", "#3DF5FF"]
+  sunset: ["#FFD36A", "#FF7B54", "#E0457B", "#6A2C70"]
+  ocean: ["#B6FFF4", "#3DF5FF", "#0077FF", "#14215E"]
+  sakura: ["#FFF0F6", "#FFB7D5", "#FF5FA2", "#B03A74"]
+  rainbow: ["#FF2D2D", "#FF8C1A", "#FFF23D", "#7CFF3A", "#3DF5FF", "#8B2DFF"]
+  void: ["#B000FF", "#6A00B8", "#2B0040", "#0A0012"]
+  royal: ["#FFC72C", "#B57CFF", "#6A0DAD", "#2E0854"]
+  shadow: ["#6A6A6A", "#2A2A2A", "#111111"]
+  crimson: ["#FF2D2D"]
+  aqua: ["#3DF5FF"]
+  pink: ["#FF8FCB"]
+  lime: ["#7CFF3A"]
+  snow: ["#FFFFFF"]
+  lava: ["#FFF6A0", "#FFB000", "#FF4A00", "#7A0A00"]
+  neon: ["#FF2DD9", "#FF8FF0", "#3DF5FF", "#00FFC8"]
+  borealis: ["#9DFF9A", "#2DFFC4", "#2D9BFF", "#8B2DFF"]
+  bloodmoon: ["#FF6A4A", "#C0102A", "#5A0010", "#1A0005"]
+  frostfire: ["#BFF4FF", "#3DB8FF", "#FF9A3D", "#FF3D00"]
+  venom: ["#D7FF3A", "#5BFF6A", "#9B2DFF", "#3A0066"]
+  cotton_candy: ["#FFC8F0", "#FF9AD5", "#B8C8FF", "#8FE3FF"]
+  midnight: ["#5A6BFF", "#2A2F8F", "#10123A", "#05060F"]
+  golden_hour: ["#FFF3C0", "#FFD36A", "#FFA040", "#C8642A"]
+  deep_sea: ["#7DFFF0", "#00B3B3", "#005A8C", "#001A3A"]
+  cherry_cola: ["#FFB3C0", "#E0304F", "#7A1020", "#2A0508"]
+  mint_chip: ["#E8FFF4", "#9BFFD3", "#3DD9A0", "#2A5A3A"]
+  obsidian: ["#6A4A8F", "#2A1A3F", "#0D0812"]
+  emerald_glow: ["#00FF9C"]
+  sapphire: ["#2D6BFF"]
+  amber: ["#FFB000"]
+
+# ---------------------------------------------------------
+# Survival: smithing table, crafting and grindstone
+# ---------------------------------------------------------
+smithing:
+  enabled: true
+  # Crafting recipes for the new templates, trim essences and the Prism Template.
+  crafting-recipes: true
+  # Putting custom-trimmed armor alone in a grindstone removes all its custom trims.
+  grindstone-removes-trims: true
+
+  # New trim template recipe (crafting table):
+  #   Diamond | KEY | Diamond
+  #   KEY | any vanilla trim template | KEY
+  #   Diamond | KEY | Diamond
+  # Copy a template: template in the middle top, KEY in the center, 7 diamonds around.
+  template-ingredients:
+    nova: GLOWSTONE_DUST
+    circuit: REDSTONE
+    scales: PRISMARINE_SHARD
+    blaze: BLAZE_ROD
+    rune: LAPIS_LAZULI
+    fracture: FLINT
+    spiral: STRING
+    aurora: GLOW_INK_SAC
+    lightning: COPPER_INGOT
+    vines: VINE
+    constellation: ENDER_PEARL
+    honeycomb: HONEYCOMB
+    chains: IRON_CHAIN
+    crystal: QUARTZ
+    feathers: FEATHER
+    web: COBWEB
+    thorns: SWEET_BERRIES
+    tiger: ORANGE_DYE
+    leopard: YELLOW_DYE
+    camo: GREEN_DYE
+    heartbeat: GLISTERING_MELON_SLICE
+    matrix: LIME_DYE
+    sun: SUNFLOWER
+    moon: PHANTOM_MEMBRANE
+    skull: BONE
+    hearts: POPPY
+    plaid: WHITE_WOOL
+    ripple: PRISMARINE_CRYSTALS
+
+  # Trim essence recipe: 8 x KEY around 1 amethyst shard = 2 essences.
+  # Use the essence like a diamond or gold ingot in the smithing table.
+  material-ingredients:
+    fire: BLAZE_POWDER
+    ice: BLUE_ICE
+    toxic: SLIME_BALL
+    galaxy: ENDER_EYE
+    sunset: ORANGE_TULIP
+    ocean: PRISMARINE_CRYSTALS
+    sakura: PINK_PETALS
+    rainbow: GLOW_BERRIES
+    void: OBSIDIAN
+    royal: GOLD_INGOT
+    shadow: COAL
+    crimson: RED_DYE
+    aqua: CYAN_DYE
+    pink: PINK_DYE
+    lime: LIME_DYE
+    snow: SNOWBALL
+    lava: MAGMA_CREAM
+    neon: GLOWSTONE_DUST
+    borealis: GLOW_INK_SAC
+    bloodmoon: NETHER_WART
+    frostfire: PACKED_ICE
+    venom: SPIDER_EYE
+    cotton_candy: SUGAR
+    midnight: INK_SAC
+    golden_hour: HONEYCOMB
+    deep_sea: KELP
+    cherry_cola: SWEET_BERRIES
+    mint_chip: COCOA_BEANS
+    obsidian: CRYING_OBSIDIAN
+    emerald_glow: EMERALD
+    sapphire: LAPIS_LAZULI
+    amber: RAW_GOLD
+
+  # Prism Template + trimmed armor + one of these items (any dye adds a color,
+  # a sponge resets to one color). Actions use the same words as /ctrim.
+  prism-effects:
+    GLOWSTONE_DUST: "glint toggle"
+    WATER_BUCKET: "style liquid"
+    GUNPOWDER: "style particles"
+    REDSTONE: "style both"
+    FEATHER: "aura wings"
+    GOLD_NUGGET: "aura crown"
+    ENDER_PEARL: "aura orbit"
+    SLIME_BALL: "aura pulse"
+    STRING: "aura helix"
+    WIND_CHARGE: "aura tornado"
+    NETHER_STAR: "aura saturn"
+    SHIELD: "aura shield"
+    AMETHYST_CLUSTER: "aura galaxy"
+    GLOW_BERRIES: "aura fireflies"
+    HEART_OF_THE_SEA: "aura double_ring"
+    TOTEM_OF_UNDYING: "aura halo"
+    BARRIER: "aura none"
+    BLAZE_POWDER: "trail flame"
+    SOUL_SAND: "trail soul_flame"
+    SNOWBALL: "trail snow"
+    CHERRY_LEAVES: "trail cherry"
+    COPPER_INGOT: "trail electric"
+    ECHO_SHARD: "trail sculk"
+    POPPY: "trail heart"
+    END_ROD: "trail end_rod"
+    FIREWORK_ROCKET: "trail firework"
+    SUGAR: "trailshape sparks"
+    RABBIT_FOOT: "trailshape footsteps"
+    PHANTOM_MEMBRANE: "trailshape comet"
+    BONE_MEAL: "trailshape spiral"
+    LEAD: "trailshape zigzag"
+    CLAY_BALL: "trailshape rings"
+    BREEZE_ROD: "speed 2"
+    HONEY_BOTTLE: "speed 0.5"
+    RABBIT_HIDE: "speed 1"
+    SLIME_BLOCK: "size 1.5"
+    HONEYCOMB: "size 1"
+
+# ---------------------------------------------------------
+# Presets: /ctrim preset <name>   or   /ctrim give <player> <name>
+#
+#  pattern:  NEW: nova circuit scales blaze rune fracture spiral aurora lightning
+#            vines constellation honeycomb chains crystal feathers web thorns
+#            tiger leopard camo heartbeat matrix sun moon skull hearts plaid ripple
+#            vanilla: bolt coast dune eye flow host raiser rib sentry shaper
+#            silence snout spire tide vex ward wayfinder wild  (or none)
+#  material: any custom material above, or vanilla: amethyst copper diamond
+#            emerald gold iron lapis netherite quartz redstone resin
+#  colors:   1 to 8 colors for the particles, names or hex (#FF00AA)
+#  trail / aura-particle: see /ctrim options
+#  trail-shape: stream comet double spiral sparks cloud footsteps zigzag rings
+#  aura:     none ring double_ring halo helix double_helix orbit
+#            pulse crown tornado wings fireflies saturn shield galaxy
+#  style:    liquid, particles or both (optional, default-style is used if missing)
+#  layers:   extra stacked trims, like ["nova:galaxy", "rune:gold"] (NEW patterns only)
+#  speed / height: effect speed (0.1-5) and aura height offset (-1.5 to 1.5)
+#  Cycle mode is set per armor with /ctrim cycle and /ctrim cyclespeed
+# ---------------------------------------------------------
+presets:
+  inferno:
+    name: Inferno
+    pattern: blaze
+    material: fire
+    colors: ["#FFF27A", "#FF9A1F", "#FF3D00", "#9B0000"]
+    trail: flame
+    trail-shape: comet
+    aura: tornado
+    aura-particle: gradient
+  frost:
+    name: Frost
+    pattern: fracture
+    material: ice
+    colors: ["#FFFFFF", "#BFF4FF", "#6FD6FF"]
+    trail: snow
+    trail-shape: sparks
+    aura: double_ring
+    aura-particle: blend
+  void:
+    name: Void
+    pattern: rune
+    material: void
+    colors: ["#B000FF", "#6A00B8", "#2B0040"]
+    trail: reverse_portal
+    trail-shape: stream
+    aura: helix
+    aura-particle: gradient
+  celestial:
+    name: Celestial
+    pattern: nova
+    material: galaxy
+    colors: ["#FF2DD9", "#8B2DFF", "#2D5BFF", "#3DF5FF"]
+    trail: end_rod
+    trail-shape: comet
+    aura: halo
+    aura-particle: sparkle
+  angel:
+    name: Angel
+    pattern: host
+    material: quartz
+    colors: ["#FFFFFF", "#FFF2B3"]
+    trail: firework
+    trail-shape: comet
+    aura: wings
+    aura-particle: blend
+  demon:
+    name: Demon
+    pattern: scales
+    material: crimson
+    colors: ["#5A0000", "#FF2D2D", "#FF8C1A"]
+    trail: flame
+    trail-shape: footsteps
+    aura: wings
+    aura-particle: gradient
+  toxic:
+    name: Toxic
+    pattern: circuit
+    material: toxic
+    colors: ["#E8FF6A", "#7CFF3A", "#1FAA3A"]
+    trail: dual
+    trail-shape: stream
+    aura: pulse
+    aura-particle: blend
+  sakura:
+    name: Sakura
+    pattern: aurora
+    material: sakura
+    colors: ["#FFF0F6", "#FFB7D5", "#FF5FA2"]
+    trail: cherry
+    trail-shape: sparks
+    aura: orbit
+    aura-particle: blend
+  ocean:
+    name: Ocean
+    pattern: spiral
+    material: ocean
+    colors: ["#B6FFF4", "#3DF5FF", "#0077FF"]
+    trail: nautilus
+    trail-shape: spiral
+    aura: double_helix
+    aura-particle: gradient
+  royal:
+    name: Royal
+    pattern: rune
+    material: royal
+    colors: ["#FFC72C", "#B57CFF", "#6A0DAD"]
+    trail: enchant
+    trail-shape: comet
+    aura: crown
+    aura-particle: dual
+  shadow:
+    name: Shadow
+    pattern: fracture
+    material: shadow
+    colors: ["#111111", "#5A5A5A"]
+    trail: smoke
+    trail-shape: stream
+    aura: fireflies
+    aura-particle: dust
+  prism:
+    name: Prism
+    pattern: spiral
+    material: rainbow
+    colors: ["#FF2D2D", "#FF8C1A", "#FFF23D", "#7CFF3A", "#3DF5FF", "#8B2DFF"]
+    trail: rainbow
+    trail-shape: comet
+    aura: ring
+    aura-particle: blend
+  lovestruck:
+    name: Lovestruck
+    pattern: coast
+    material: pink
+    colors: ["#FF4F7B", "#FFB3C7"]
+    trail: heart
+    trail-shape: footsteps
+    aura: orbit
+    aura-particle: dual
+  storm:
+    name: Storm
+    pattern: fracture
+    material: aqua
+    colors: ["#FFF23D", "#7EC8FF", "#2D5BFF"]
+    trail: electric
+    trail-shape: sparks
+    aura: tornado
+    aura-particle: blend
+  sunset:
+    name: Sunset
+    pattern: aurora
+    material: sunset
+    colors: ["#FFD36A", "#FF7B54", "#E0457B", "#6A2C70"]
+    trail: gradient
+    trail-shape: comet
+    aura: double_ring
+    aura-particle: blend
+  dragon:
+    name: Dragon
+    pattern: scales
+    material: toxic
+    colors: ["#7CFF3A", "#1FAA3A", "#0B4D1E"]
+    trail: blend
+    trail-shape: cloud
+    aura: wings
+    aura-particle: gradient
+  cyber:
+    name: Cyber
+    pattern: circuit
+    material: galaxy
+    colors: ["#3DF5FF", "#FF2DD9"]
+    trail: electric
+    trail-shape: double
+    aura: pulse
+    aura-particle: dual
+  nebula:
+    name: Nebula
+    pattern: nova
+    material: sunset
+    colors: ["#FF2DD9", "#8B2DFF", "#2D5BFF"]
+    trail: gradient
+    trail-shape: comet
+    aura: fireflies
+    aura-particle: blend
+    density: 1.5
+  thunderlord:
+    name: Thunderlord
+    pattern: lightning
+    material: frostfire
+    colors: ["#BFF4FF", "#3DB8FF", "#FFF23D"]
+    trail: electric
+    trail-shape: sparks
+    aura: tornado
+    aura-particle: blend
+  jungle:
+    name: Jungle
+    pattern: vines
+    material: mint_chip
+    colors: ["#9BFFD3", "#3DD9A0", "#1FAA3A"]
+    trail: happy
+    trail-shape: footsteps
+    aura: orbit
+    aura-particle: blend
+  starlight:
+    name: Starlight
+    pattern: constellation
+    material: midnight
+    colors: ["#FFFFFF", "#5A6BFF", "#2A2F8F"]
+    trail: end_rod
+    trail-shape: comet
+    aura: halo
+    aura-particle: sparkle
+  hive:
+    name: Hive
+    pattern: honeycomb
+    material: golden_hour
+    colors: ["#FFF3C0", "#FFD36A", "#FFA040"]
+    trail: wax
+    trail-shape: stream
+    aura: double_ring
+    aura-particle: blend
+  warlord:
+    name: Warlord
+    pattern: chains
+    material: obsidian
+    colors: ["#6A4A8F", "#2A1A3F"]
+    trail: smoke
+    trail-shape: footsteps
+    aura: crown
+    aura-particle: dual
+  gem:
+    name: Gem
+    pattern: crystal
+    material: sapphire
+    colors: ["#BFF4FF", "#2D6BFF", "#8B2DFF"]
+    trail: sparkle
+    trail-shape: sparks
+    aura: double_helix
+    aura-particle: gradient
+  phoenix:
+    name: Phoenix
+    pattern: feathers
+    material: lava
+    layers: ["blaze:fire"]
+    colors: ["#FFF6A0", "#FFB000", "#FF4A00"]
+    trail: flame
+    trail-shape: comet
+    aura: wings
+    aura-particle: gradient
+  arachnid:
+    name: Arachnid
+    pattern: web
+    material: venom
+    colors: ["#D7FF3A", "#9B2DFF"]
+    trail: witch
+    trail-shape: double
+    aura: fireflies
+    aura-particle: dual
+  bloodthorn:
+    name: Bloodthorn
+    pattern: thorns
+    material: bloodmoon
+    colors: ["#FF6A4A", "#C0102A", "#5A0010"]
+    trail: crimson
+    trail-shape: stream
+    aura: ring
+    aura-particle: blend
+  predator:
+    name: Predator
+    pattern: tiger
+    material: amber
+    colors: ["#FFB000", "#FF6A00"]
+    trail: ash
+    trail-shape: footsteps
+    aura: pulse
+    aura-particle: blend
+  hacker:
+    name: Hacker
+    pattern: matrix
+    material: emerald_glow
+    colors: ["#00FF9C", "#00A85A"]
+    trail: happy
+    trail-shape: stream
+    aura: tornado
+    aura-particle: dual
+  solar:
+    name: Solar
+    pattern: sun
+    material: golden_hour
+    colors: ["#FFF3C0", "#FFD36A", "#FF7B54"]
+    trail: flame
+    trail-shape: spiral
+    aura: halo
+    aura-particle: blend
+  lunar:
+    name: Lunar
+    pattern: moon
+    material: midnight
+    colors: ["#D7E1FF", "#5A6BFF", "#10123A"]
+    trail: end_rod
+    trail-shape: comet
+    aura: orbit
+    aura-particle: blend
+  reaper:
+    name: Reaper
+    pattern: skull
+    material: obsidian
+    layers: ["chains:void"]
+    colors: ["#B000FF", "#2A1A3F", "#0D0812"]
+    trail: soul
+    trail-shape: cloud
+    aura: wings
+    aura-particle: gradient
+  sweetheart:
+    name: Sweetheart
+    pattern: hearts
+    material: cotton_candy
+    colors: ["#FFC8F0", "#FF9AD5", "#B8C8FF"]
+    trail: heart
+    trail-shape: footsteps
+    aura: halo
+    aura-particle: blend
+  tidal:
+    name: Tidal
+    pattern: ripple
+    material: deep_sea
+    colors: ["#7DFFF0", "#00B3B3", "#005A8C"]
+    trail: nautilus
+    trail-shape: comet
+    aura: double_ring
+    aura-particle: blend
+  aurora_borealis:
+    name: Borealis
+    pattern: aurora
+    material: borealis
+    colors: ["#9DFF9A", "#2DFFC4", "#2D9BFF", "#8B2DFF"]
+    trail: blend
+    trail-shape: comet
+    aura: ring
+    aura-particle: blend
+  neon_rider:
+    name: Neon Rider
+    pattern: circuit
+    material: neon
+    colors: ["#FF2DD9", "#3DF5FF", "#00FFC8"]
+    trail: electric
+    trail-shape: double
+    aura: ring
+    aura-particle: dual
+  cosmos:
+    name: Cosmos
+    pattern: constellation
+    material: galaxy
+    layers: ["nova:neon", "ripple:midnight"]
+    colors: ["#FF2DD9", "#8B2DFF", "#2D5BFF", "#3DF5FF"]
+    trail: blend
+    trail-shape: comet
+    aura: saturn
+    aura-particle: blend
+  guardian:
+    name: Guardian
+    pattern: rune
+    material: diamond
+    layers: ["crystal:sapphire"]
+    colors: ["#BFF4FF", "#2D6BFF"]
+    trail: glow
+    trail-shape: rings
+    aura: shield
+    aura-particle: blend
+    speed: 0.8
+  milkyway:
+    name: Milky Way
+    pattern: spiral
+    material: borealis
+    layers: ["constellation:snow"]
+    colors: ["#9DFF9A", "#2DFFC4", "#2D9BFF", "#8B2DFF"]
+    trail: firefly
+    trail-shape: zigzag
+    aura: galaxy
+    aura-particle: blend
+  overlord:
+    name: Overlord
+    pattern: silence
+    material: netherite
+    layers: ["lightning:bloodmoon", "thorns:crimson"]
+    colors: ["#FF6A4A", "#C0102A", "#1A0005"]
+    trail: copper_flame
+    trail-shape: comet
+    aura: crown
+    aura-particle: gradient
+    height: 0.1

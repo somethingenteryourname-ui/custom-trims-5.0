@@ -1,0 +1,23 @@
+name: CustomTrims
+version: '${project.version}'
+main: dev.customtrims.CustomTrimsPlugin
+api-version: '1.21'
+description: Custom armor trims with colored particle trails and auras.
+commands:
+  ctrim:
+    description: Customize your armor trim, trail and aura.
+    aliases: [customtrim, trims]
+    usage: /ctrim help
+permissions:
+  customtrims.use:
+    description: Edit the trim on your own armor and apply presets to yourself.
+    default: true
+  customtrims.give:
+    description: Give trimmed armor sets to players.
+    default: op
+  customtrims.admin:
+    description: Reload, and apply/remove trims for other players.
+    default: op
+    children:
+      customtrims.use: true
+      customtrims.give: true
